@@ -13,6 +13,7 @@ import org.opensearch.action.bulk.BulkRequest;
 import org.opensearch.action.search.SearchRequest;
 import org.opensearch.action.support.ActionFilter;
 import org.opensearch.action.support.ActionFilterChain;
+import org.opensearch.action.support.ActionRequestMetadata;
 import org.opensearch.common.inject.Inject;
 import org.opensearch.core.action.ActionListener;
 import org.opensearch.core.action.ActionResponse;
@@ -37,6 +38,7 @@ public class PerformanceAnalyzerActionFilter implements ActionFilter {
             Task task,
             final String action,
             Request request,
+            ActionRequestMetadata<Request, Response> actionRequestMetadata,
             ActionListener<Response> listener,
             ActionFilterChain<Request, Response> chain) {
 

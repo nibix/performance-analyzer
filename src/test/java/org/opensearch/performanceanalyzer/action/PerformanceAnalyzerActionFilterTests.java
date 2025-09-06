@@ -19,6 +19,7 @@ import org.opensearch.action.ActionRequest;
 import org.opensearch.action.bulk.BulkRequest;
 import org.opensearch.action.search.SearchRequest;
 import org.opensearch.action.support.ActionFilterChain;
+import org.opensearch.action.support.ActionRequestMetadata;
 import org.opensearch.core.action.ActionListener;
 import org.opensearch.core.action.ActionResponse;
 import org.opensearch.performanceanalyzer.config.PerformanceAnalyzerController;
@@ -61,7 +62,7 @@ public class PerformanceAnalyzerActionFilterTests {
     }
 
     private void testApply(ActionRequest request) {
-        filter.apply(task, "_action", request, listener, chain);
+        filter.apply(task, "_action", request, ActionRequestMetadata.empty(), listener, chain);
         verify(chain).proceed(eq(task), eq("_action"), eq(request), any());
     }
 
